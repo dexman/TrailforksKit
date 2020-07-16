@@ -1,3 +1,3 @@
 # TrailforksKit
 
-A description of this package.
+Swift library for accessing the [Trailforks API|https://www.trailforks.com/about/api/].
