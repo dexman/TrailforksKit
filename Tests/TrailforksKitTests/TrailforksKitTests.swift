@@ -9,7 +9,7 @@ final class TrailforksKitTests: XCTestCase {
             url: XCTUnwrap(URL(string: "https://www.trailforks.com/api/1/regions")),
             fixtureNamed: "regions_detailed.json")
 
-        let request = RegionsRequest(parameters: [])
+        let request = RegionsRequest.make(parameters: [])
         let trailforksService = TrailforksService(
             networkClient: networkClient,
             appCredential: nil)
@@ -25,7 +25,7 @@ final class TrailforksKitTests: XCTestCase {
             statusCode: 401,
             fixtureNamed: "regions_error.json")
 
-        let request = RegionsRequest(parameters: [])
+        let request = RegionsRequest.make(parameters: [])
         let trailforksService = TrailforksService(
             networkClient: networkClient,
             appCredential: nil)
@@ -48,13 +48,13 @@ final class TrailforksKitTests: XCTestCase {
 extension TrailforksService {
 
     @discardableResult
-    public func test_synchronouslySend<R: TrailforksServiceRequest>(
-        request: R,
+    public func test_synchronouslySend<R>(
+        request: TrailforksServiceRequest<R>,
         in testCase: XCTestCase
-    ) -> Result<R.ResponseType, Error> {
-        var asyncResult: Result<R.ResponseType, Error>?
+    ) -> Result<R, Error> {
+        var asyncResult: Result<R, Error>?
         let exc = testCase.expectation(description: "asyncResult")
-        send(request: request) { (result: Result<R.ResponseType, Error>) in
+        send(request: request) { (result: Result<R, Error>) in
             asyncResult = result
             exc.fulfill()
         }

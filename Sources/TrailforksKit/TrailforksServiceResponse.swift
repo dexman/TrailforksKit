@@ -7,7 +7,6 @@
 
 import Foundation
 
-// http 401: {"error":1,"message":"Required parameter of 'app_id' is missing or empty","data":null}
 enum TrailforksServiceResponse<T: Decodable>: Decodable {
 
     case success(T)

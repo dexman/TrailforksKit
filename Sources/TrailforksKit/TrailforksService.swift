@@ -15,9 +15,9 @@ public final class TrailforksService {
     }
 
     @discardableResult
-    public func send<R: TrailforksServiceRequest>(
-        request: R,
-        completion: @escaping (Result<R.ResponseType, Error>) -> Void
+    public func send<R>(
+        request: TrailforksServiceRequest<R>,
+        completion: @escaping (Result<R, Error>) -> Void
     ) -> NetworkClientCancellable {
         let urlRequest: URLRequest
         do {
@@ -33,7 +33,7 @@ public final class TrailforksService {
             let decoder = JSONDecoder()
             do {
                 let data = try result.get().data ?? Data()
-                let result = try decoder.decode(TrailforksServiceResponse<R.ResponseType>.self, from: data)
+                let result = try decoder.decode(TrailforksServiceResponse<R>.self, from: data)
                 let value = try result.get()
                 completion(.success(value))
             } catch {
@@ -45,13 +45,13 @@ public final class TrailforksService {
     private let networkClient: NetworkClient
     private let appCredential: TrailforksAppCredential?
 
-    private func createURLRequest<R: TrailforksServiceRequest>(from request: R) throws -> URLRequest {
+    private func createURLRequest<R>(from request: TrailforksServiceRequest<R>) throws -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "www.trailforks.com"
-        urlComponents.path = request.trailforksServicePath
+        urlComponents.path = request.path
 
-        var queryItems: [URLQueryItem] = request.trailforksServiceParameters.map {
+        var queryItems: [URLQueryItem] = request.parameters.map {
             URLQueryItem(name: $0.0, value: $0.1)
         }
         if let appCredential = appCredential {
@@ -69,7 +69,7 @@ public final class TrailforksService {
         }
 
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = request.trailforksServiceMethod
+        urlRequest.httpMethod = request.method
         return urlRequest
     }
 }

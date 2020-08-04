@@ -7,6 +7,9 @@
 
 import Foundation
 
+// PB code
+// https://www.pinkbike.com/u/bentomas/blog/pinkbike-blog-code.html
+
 public struct Region: Decodable {
 
     public let rid: String? // "rid": "35629"

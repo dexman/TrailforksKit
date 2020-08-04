@@ -7,18 +7,19 @@
 
 import Foundation
 
-public protocol TrailforksServiceRequest {
+public struct TrailforksServiceRequest<ResponseType: Decodable> {
 
-    associatedtype ResponseType: Decodable
+    public let method: String
+    public let path: String
+    public let parameters: [(String, String)]
 
-    var trailforksServiceMethod: String { get }
-    var trailforksServicePath: String { get }
-    var trailforksServiceParameters: [(String, String)] { get }
-}
-
-extension TrailforksServiceRequest {
-
-    public var trailforksServiceMethod: String {
-        return "GET"
+    public init(
+        method: String = "GET",
+        path: String,
+        parameters: [(String, String)] = []
+    ) {
+        self.method = method
+        self.path = path
+        self.parameters = parameters
     }
 }

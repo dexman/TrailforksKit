@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RegionsRequest: Hashable {
+public enum RegionsRequest: Hashable {
 
     public enum Parameters: Hashable {
         case filter([Filter])
@@ -29,40 +29,27 @@ public struct RegionsRequest: Hashable {
         case files
     }
 
-    public init(parameters: [Parameters]) {
-        self.parameters = parameters
-    }
-
-    private let parameters: [Parameters]
-}
-
-extension RegionsRequest: TrailforksServiceRequest {
-
-    public typealias ResponseType = [Region]
-
-    public var trailforksServicePath: String {
-        return "/api/1/regions"
-    }
-
-    public var trailforksServiceParameters: [(String, String)] {
-        return parameters.map { parameter -> (String, String) in
-            switch parameter {
-            case let .filter(filters):
-                let filterStrings = filters.map { (filter: Filter) -> (String, String) in
-                    switch filter {
-                    case let .parent(parentId):
-                        return ("parent", parentId)
+    public static func make(parameters: [RegionsRequest.Parameters]) -> TrailforksServiceRequest<[Region]> {
+        return TrailforksServiceRequest(
+            path: "/api/1/regions",
+            parameters: parameters.map { parameter -> (String, String) in
+                switch parameter {
+                case let .filter(filters):
+                    let filterStrings = filters.map { (filter: RegionsRequest.Filter) -> (String, String) in
+                        switch filter {
+                        case let .parent(parentId):
+                            return ("parent", parentId)
+                        }
                     }
+                    let filterValue = filterStrings.map { "\($0.0)::\($0.1)" }.joined(separator: ";")
+                    return ("filter", filterValue)
+                case let .page(page):
+                    return ("page", "\(page)")
+                case let .rows(rows):
+                    return ("rows", "\(rows)")
+                case let .scope(scope):
+                    return ("scope", scope.rawValue)
                 }
-                let filterValue = filterStrings.map { "\($0.0)::\($0.1)" }.joined(separator: ";")
-                return ("filter", filterValue)
-            case let .page(page):
-                return ("page", "\(page)")
-            case let .rows(rows):
-                return ("rows", "\(rows)")
-            case let .scope(scope):
-                return ("scope", scope.rawValue)
-            }
-        }
+            })
     }
 }
