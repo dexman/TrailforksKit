@@ -55,19 +55,19 @@ public struct Region: Decodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case rid
         case alias
-        case title
+        case cityTitle = "city_title"
+        case condition
+        case countryTitle = "country_title"
         case description
-        case searchTerms = "search_terms"
         case isRidingArea = "isridingarea"
         case latitude
         case longitude
-        case countryTitle = "country_title"
         case provinceTitle = "prov_title"
-        case cityTitle = "city_title"
-        case condition
+        case searchTerms = "search_terms"
         case status
         case statusTimestamp = "status_ts"
+        case title
+        case rid
     }
 }
