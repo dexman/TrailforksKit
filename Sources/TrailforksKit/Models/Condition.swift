@@ -44,4 +44,9 @@ public enum Condition: String, Decodable {
 
     /// 11 - Ideal
     case ideal = "11"
+
+    public init(from decoder: Decoder) throws {
+        let rawValue = try decoder.singleValueContainer().decode(String.self)
+        self = Condition(rawValue: rawValue) ?? .unknown
+    }
 }

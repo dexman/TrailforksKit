@@ -23,4 +23,9 @@ public enum Status: String, Decodable {
 
     /// 4 - Closed
     case closed = "4"
+
+    public init(from decoder: Decoder) throws {
+        let rawValue = try decoder.singleValueContainer().decode(String.self)
+        self = Status(rawValue: rawValue) ?? .none
+    }
 }
