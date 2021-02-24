@@ -40,6 +40,39 @@ final class TrailforksKitTests: XCTestCase {
         }
     }
 
+    func testReportSuccess() throws {
+        let networkClient = NetworkClientForTests()
+        try networkClient.expect(
+            method: "POST",
+            url: XCTUnwrap(URL(string: "https://www.trailforks.com/api/1/report")),
+            fixtureNamed: "report.json")
+
+        let request = ReportRequest.make(
+            userId: "testuser",
+            trailId: "15720",
+            status: .minorIssue,
+            condition: .prevalentMud,
+            description: "MuddyMudBud",
+            marker: CLLocationCoordinate2D(latitude: 1, longitude: 2)
+        )
+        let trailforksService = TrailforksService(
+            networkClient: networkClient,
+            appCredential: nil
+        )
+        let result = trailforksService.test_synchronouslySend(
+            request: request,
+            token: Token(
+                tokenPublic: "testtoken",
+                tokenSecret: "testsecret",
+                userId: "testuser",
+                username: "testusername",
+                expiresOn: Date(timeIntervalSince1970: 777)
+            ),
+            in: self
+        )
+        NSLog(try result.get().description)
+    }
+
     func testTokenRequestSuccess() throws {
         let networkClient = NetworkClientForTests()
         try networkClient.expect(
@@ -69,6 +102,7 @@ final class TrailforksKitTests: XCTestCase {
         ("testRegionsRequestSuccess", testRegionsRequestSuccess),
         ("testRegionsRequestFailure", testRegionsRequestFailure),
         ("testTokenRequestSuccess", testTokenRequestSuccess),
+        ("testReportSuccess", testReportSuccess),
     ]
 }
 
@@ -77,11 +111,12 @@ extension TrailforksService {
     @discardableResult
     public func test_synchronouslySend<R>(
         request: TrailforksServiceRequest<R>,
+        token: Token? = nil,
         in testCase: XCTestCase
     ) -> Result<R, Error> {
         var asyncResult: Result<R, Error>?
         let exc = testCase.expectation(description: "asyncResult")
-        send(request: request) { (result: Result<R, Error>) in
+        send(request: request, token: token) { (result: Result<R, Error>) in
             asyncResult = result
             exc.fulfill()
         }

@@ -19,6 +19,7 @@ let package = Package(
           resources: [
             .copy("regions_detailed.json"),
             .copy("regions_error.json"),
+            .copy("report.json"),
             .copy("token.json"),
           ])
     ]

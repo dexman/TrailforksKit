@@ -17,39 +17,30 @@ final class NetworkClientForTests: NetworkClient {
 
     func expect(request: URLRequest, result: NetworkClientResult) {
         expectationsQueue.sync {
-            expectations[request] = result
+            expectations[ExpectationKey(request)] = result
         }
     }
 
-    func expect(url: URL, statusCode: Int = 200, data: Data = .init()) {
-        expect(
-            request: URLRequest(url: url),
-            result: .success((
+    func expect(method: String = "GET", url: URL, statusCode: Int = 200, data: Data = .init()) {
+        let key = ExpectationKey(method: method, url: url)
+        expectationsQueue.sync {
+            expectations[key] = .success((
                 HTTPURLResponse(
                     url: url,
                     statusCode: statusCode,
                     httpVersion: nil,
                     headerFields: nil)!,
                 data
-            )))
+            ))
+        }
     }
 
-    func expect(url: URL, statusCode: Int = 200, fixtureNamed fixtureName: String) throws {
+    func expect(method: String = "GET", url: URL, statusCode: Int = 200, fixtureNamed fixtureName: String) throws {
         let bundle = Bundle.module
-//        let bundle =  Bundle(path: "/Users/adexter/Downloads/TrailforksKit/.build//x86_64-apple-macosx/debug/TrailforksKit_TrailforksKitTests.bundle")!
+//        let bundle =  Bundle(path: "/Users/adexter/Code/Personal/TrailforksKit/.build/x86_64-apple-macosx/debug/TrailforksKit_TrailforksKitTests.bundle")!
         let fixtureURL = try XCTUnwrap(bundle.url(forResource: fixtureName, withExtension: nil))
         let data = try Data(contentsOf: fixtureURL)
-
-        expect(
-            request: URLRequest(url: url),
-            result: .success((
-                HTTPURLResponse(
-                    url: url,
-                    statusCode: statusCode,
-                    httpVersion: nil,
-                    headerFields: nil)!,
-                data
-            )))
+        expect(method: method, url: url, statusCode: statusCode, data: data)
     }
 
     func send(request: URLRequest, completion: @escaping (NetworkClientResult) -> Void) -> NetworkClientCancellable {
@@ -62,7 +53,8 @@ final class NetworkClientForTests: NetworkClient {
                 return
             }
 
-            let result = self.expectations[request, default: .failure(UnexpectedRequest(request: request))]
+            let key = ExpectationKey(request)
+            let result = self.expectations[key, default: .failure(UnexpectedRequest(request: request))]
             DispatchQueue.global().async {
                 guard !cancellable.isCancelled else {
                     completion(.failure(URLError(.cancelled)))
@@ -74,7 +66,21 @@ final class NetworkClientForTests: NetworkClient {
         return cancellable
     }
 
-    private var expectations: [URLRequest: NetworkClientResult] = [:]
+    private struct ExpectationKey: Hashable {
+        let method: String?
+        let url: URL?
+
+        init(method: String?, url: URL?) {
+            self.method = method
+            self.url = url
+        }
+
+        init(_ request: URLRequest) {
+            self.method = request.httpMethod
+            self.url = request.url
+        }
+    }
+    private var expectations: [ExpectationKey: NetworkClientResult] = [:]
     private let expectationsQueue = DispatchQueue(label: "DummyNetworkClient.expectationsQueue")
 }
 

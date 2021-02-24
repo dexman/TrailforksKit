@@ -1,0 +1,36 @@
+{
+    "error": 0,
+    "message": "",
+    "data": {
+        "api": true,
+        "status": "2",
+        "userid": "testuser",
+        "trailid": "15720",
+        "action": "add",
+        "condition": "2",
+        "description": "MuddyMudBud",
+        "marker": "1.0,2.0",
+        "trail_work": 0,
+        "work_hours": 0,
+        "work_attendance": 0,
+        "work_hours_paid": 0,
+        "work_attendance_paid": 0,
+        "description_suggest": 0,
+        "source": "api",
+        "reportuid": "",
+        "appversion": "",
+        "latitude": 0,
+        "longitude": 0,
+        "private": 0,
+        "activitytype": 1,
+        "poiid": null,
+        "published": 1,
+        "activitytypes": [
+            1,
+            2,
+            6,
+            5
+        ],
+        "reportid": 1437590
+    }
+}
