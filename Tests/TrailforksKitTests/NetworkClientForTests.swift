@@ -35,8 +35,8 @@ final class NetworkClientForTests: NetworkClient {
     }
 
     func expect(url: URL, statusCode: Int = 200, fixtureNamed fixtureName: String) throws {
-        // let bundle = Bundle.module
-        let bundle =  Bundle(path: "/Users/adexter/Downloads/TrailforksKit/.build//x86_64-apple-macosx/debug/TrailforksKit_TrailforksKitTests.bundle")!
+        let bundle = Bundle.module
+//        let bundle =  Bundle(path: "/Users/adexter/Downloads/TrailforksKit/.build//x86_64-apple-macosx/debug/TrailforksKit_TrailforksKitTests.bundle")!
         let fixtureURL = try XCTUnwrap(bundle.url(forResource: fixtureName, withExtension: nil))
         let data = try Data(contentsOf: fixtureURL)
 

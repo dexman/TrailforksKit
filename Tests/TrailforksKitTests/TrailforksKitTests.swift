@@ -40,8 +40,35 @@ final class TrailforksKitTests: XCTestCase {
         }
     }
 
+    func testTokenRequestSuccess() throws {
+        let networkClient = NetworkClientForTests()
+        try networkClient.expect(
+            url: XCTUnwrap(URL(string: "https://www.trailforks.com/api/1/token?code=testcode")),
+            fixtureNamed: "token.json")
+
+        let request = TokenRequest.make(code: "testcode")
+        let trailforksService = TrailforksService(
+            networkClient: networkClient,
+            appCredential: nil)
+        let result = trailforksService.test_synchronouslySend(request: request, in: self)
+        let token = try result.get()
+
+        XCTAssertEqual(
+            token,
+            Token(
+                tokenPublic: "testtoken",
+                tokenSecret: "testsecret",
+                userId: "777",
+                username: "luckyrider",
+                expiresOn: Date(timeIntervalSince1970: 3243971896)
+            )
+        )
+    }
+
     static var allTests = [
+        ("testRegionsRequestSuccess", testRegionsRequestSuccess),
         ("testRegionsRequestFailure", testRegionsRequestFailure),
+        ("testTokenRequestSuccess", testTokenRequestSuccess),
     ]
 }
 
