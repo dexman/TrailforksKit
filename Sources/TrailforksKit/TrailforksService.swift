@@ -81,7 +81,7 @@ public final class TrailforksService {
 
         let bodyData: Data?
         if !parameters.isEmpty {
-            let queryItems = request.parameters.map {
+            let queryItems = parameters.map {
                 URLQueryItem(name: $0.0, value: $0.1)
             }
             if request.method != "POST" {
