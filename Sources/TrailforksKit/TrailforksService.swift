@@ -47,6 +47,27 @@ public final class TrailforksService {
         }
     }
 
+    public func loginUrl(redirectUrl: URL) throws -> URL {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "www.trailforks.com"
+        urlComponents.path = "/api/1/oauth2/login"
+        urlComponents.queryItems = [
+            URLQueryItem(
+                name: "client_id",
+                value: appCredential?.id
+            ),
+            URLQueryItem(
+                name: "redirect_uri",
+                value: redirectUrl.absoluteString
+            ),
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        return url
+    }
+
     private let networkClient: NetworkClient
     private let appCredential: TrailforksAppCredential?
 
