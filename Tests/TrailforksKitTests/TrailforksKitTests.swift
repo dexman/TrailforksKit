@@ -1,9 +1,11 @@
+import Combine
+import CoreLocation
 import XCTest
 @testable import TrailforksKit
 
 final class TrailforksKitTests: XCTestCase {
 
-    func testRegionsRequestSuccess() throws {
+    func testRegionsRequestSuccess() async throws {
         let networkClient = NetworkClientForTests()
         try networkClient.expect(
             url: XCTUnwrap(URL(string: "https://www.trailforks.com/api/1/regions")),
@@ -13,12 +15,12 @@ final class TrailforksKitTests: XCTestCase {
         let trailforksService = TrailforksService(
             networkClient: networkClient,
             appCredential: nil)
-        let result = trailforksService.test_synchronouslySend(request: request, in: self)
+        let result = try await trailforksService.send(request: request)
 
-        XCTAssertEqual(try result.get().count, 92)
+        XCTAssertEqual(result.count, 92)
     }
 
-    func testRegionsRequestFailure() throws {
+    func testRegionsRequestFailure() async throws {
         let networkClient = NetworkClientForTests()
         try networkClient.expect(
             url: XCTUnwrap(URL(string: "https://www.trailforks.com/api/1/regions")),
@@ -29,10 +31,12 @@ final class TrailforksKitTests: XCTestCase {
         let trailforksService = TrailforksService(
             networkClient: networkClient,
             appCredential: nil)
-        let result = trailforksService.test_synchronouslySend(request: request, in: self)
 
-        XCTAssertThrowsError(try result.get()) {
-            if let error = $0 as? TrailforksServiceError {
+        do {
+            _ = try await trailforksService.send(request: request)
+            XCTFail("Expected an \(TrailforksServiceError.self)")
+        } catch {
+            if let error = error as? TrailforksServiceError {
                 XCTAssertEqual(error.message, "Your API access is region restricted, no valid RID specified!")
             } else {
                 XCTFail("Expected an \(TrailforksServiceError.self)")
@@ -40,7 +44,7 @@ final class TrailforksKitTests: XCTestCase {
         }
     }
 
-    func testReportSuccess() throws {
+    func testReportSuccess() async throws {
         let networkClient = NetworkClientForTests()
         try networkClient.expect(
             method: "POST",
@@ -59,7 +63,7 @@ final class TrailforksKitTests: XCTestCase {
             networkClient: networkClient,
             appCredential: nil
         )
-        let result = trailforksService.test_synchronouslySend(
+        let result = try await trailforksService.send(
             request: request,
             token: Token(
                 tokenPublic: "testtoken",
@@ -67,13 +71,12 @@ final class TrailforksKitTests: XCTestCase {
                 userId: "testuser",
                 username: "testusername",
                 expiresOn: Date(timeIntervalSince1970: 777)
-            ),
-            in: self
+            )
         )
-        NSLog(try result.get().description)
+        NSLog(result.description)
     }
 
-    func testTokenRequestSuccess() throws {
+    func testTokenRequestSuccess() async throws {
         let networkClient = NetworkClientForTests()
         try networkClient.expect(
             url: XCTUnwrap(URL(string: "https://www.trailforks.com/api/1/token?code=testcode")),
@@ -83,8 +86,7 @@ final class TrailforksKitTests: XCTestCase {
         let trailforksService = TrailforksService(
             networkClient: networkClient,
             appCredential: nil)
-        let result = trailforksService.test_synchronouslySend(request: request, in: self)
-        let token = try result.get()
+        let token = try await trailforksService.send(request: request)
 
         XCTAssertEqual(
             token,
@@ -104,23 +106,4 @@ final class TrailforksKitTests: XCTestCase {
         ("testTokenRequestSuccess", testTokenRequestSuccess),
         ("testReportSuccess", testReportSuccess),
     ]
-}
-
-extension TrailforksService {
-
-    @discardableResult
-    public func test_synchronouslySend<R>(
-        request: TrailforksServiceRequest<R>,
-        token: Token? = nil,
-        in testCase: XCTestCase
-    ) -> Result<R, Error> {
-        var asyncResult: Result<R, Error>?
-        let exc = testCase.expectation(description: "asyncResult")
-        send(request: request, token: token) { (result: Result<R, Error>) in
-            asyncResult = result
-            exc.fulfill()
-        }
-        testCase.wait(for: [exc], timeout: 10.0)
-        return asyncResult!
-    }
 }

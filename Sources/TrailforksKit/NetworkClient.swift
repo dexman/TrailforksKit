@@ -5,60 +5,54 @@
 //  Created by Arthur Dexter on 7/16/20.
 //
 
+import Combine
 import Foundation
-
-public typealias NetworkClientResult = Result<(response: HTTPURLResponse, data: Data?), Error>
 
 /// Abstract protocol for network requests
 ///
 /// This makes it easier to write tests and mock server responses.
 public protocol NetworkClient {
 
-    func send(
-        request: URLRequest,
-        completion: @escaping (NetworkClientResult) -> Void
-    ) -> NetworkClientCancellable
-}
+    typealias NetworkClientResponse = (data: Data, response: HTTPURLResponse)
 
-public protocol NetworkClientCancellable {
-
-    func cancel()
-}
-
-struct EmptyCancellable: NetworkClientCancellable {
-
-    func cancel() {}
+    func data(for request: URLRequest) async throws -> NetworkClientResponse
 }
 
 /// Concrete implementation of `NetworkClient` based on a real `URLSession`.
-public final class URLSessionNetworkClient: NetworkClient {
+extension URLSession: NetworkClient {
 
-    public struct BadServerResponse: Error {}
-
-    public init(session: URLSession) {
-        self.session = session
-    }
-
-    public func send(
-        request: URLRequest,
-        completion: @escaping (NetworkClientResult) -> Void
-    ) -> NetworkClientCancellable {
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                return completion(.failure(error))
+    public func data(
+        for request: URLRequest
+    ) async throws -> NetworkClientResponse {
+        if #available(iOS 15.0, macOS 12.0, *) {
+            let (data, response) = try await self.data(for: request, delegate: nil)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw URLError(.badServerResponse)
             }
-
-            guard let response = response as? HTTPURLResponse else {
-                return completion(.failure(BadServerResponse()))
+            return (data, httpResponse)
+        } else {
+            return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<NetworkClientResponse, Error>) in
+                var cancellable: AnyCancellable?
+                cancellable = dataTaskPublisher(for: request).sink(
+                    receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case let .failure(error):
+                            continuation.resume(throwing: error)
+                        }
+                        cancellable = nil
+                    },
+                    receiveValue: { (data, response) in
+                        guard let httpResponse = response as? HTTPURLResponse else {
+                            continuation.resume(throwing: URLError(.badServerResponse))
+                            return
+                        }
+                        continuation.resume(returning: (data, httpResponse))
+                    }
+                )
+                withExtendedLifetime(cancellable) {}
             }
-
-            completion(.success((response, data)))
         }
-        task.resume()
-        return task
     }
-
-    private let session: URLSession
 }
-
-extension URLSessionTask: NetworkClientCancellable {}

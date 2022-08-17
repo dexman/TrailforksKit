@@ -5,6 +5,7 @@
 //  Created by Arthur Dexter on 7/16/20.
 //
 
+import Combine
 import CommonCrypto
 import Foundation
 
@@ -15,36 +16,21 @@ public final class TrailforksService {
         self.appCredential = appCredential
     }
 
-    @discardableResult
     public func send<R>(
         request: TrailforksServiceRequest<R>,
-        token: Token? = nil,
-        completion: @escaping (Result<R, Error>) -> Void
-    ) -> NetworkClientCancellable {
-        let urlRequest: URLRequest
-        do {
-            urlRequest = try createURLRequest(
-                from: request,
-                token: token
-            )
-        } catch {
-            DispatchQueue.main.async {
-                completion(.failure(error))
-            }
-            return EmptyCancellable()
-        }
+        token: Token? = nil
+    ) async throws -> R {
+        let urlRequest = try createURLRequest(
+            from: request,
+            token: token
+        )
 
-        return networkClient.send(request: urlRequest) { (result: NetworkClientResult) in
+        let (data, _) = try await networkClient.data(for: urlRequest)
+        let result = try await Task { () -> TrailforksServiceResponse<R> in
             let decoder = JSONDecoder()
-            do {
-                let data = try result.get().data ?? Data()
-                let result = try decoder.decode(TrailforksServiceResponse<R>.self, from: data)
-                let value = try result.get()
-                completion(.success(value))
-            } catch {
-                completion(.failure(error))
-            }
-        }
+            return try decoder.decode(TrailforksServiceResponse<R>.self, from: data)
+        }.value
+        return try result.get()
     }
 
     public func loginUrl(redirectUrl: URL) throws -> URL {
