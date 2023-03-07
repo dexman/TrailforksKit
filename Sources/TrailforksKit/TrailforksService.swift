@@ -11,8 +11,13 @@ import Foundation
 
 public final class TrailforksService {
 
-    public init(networkClient: NetworkClient, appCredential: TrailforksAppCredential?) {
+    public init(
+        networkClient: NetworkClient,
+        serverConfiguration: TrailforksServerConfiguration = .production,
+        appCredential: TrailforksAppCredential?
+    ) {
         self.networkClient = networkClient
+        self.serverConfiguration = serverConfiguration
         self.appCredential = appCredential
     }
 
@@ -34,9 +39,7 @@ public final class TrailforksService {
     }
 
     public func loginUrl(redirectUrl: URL) throws -> URL {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "www.trailforks.com"
+        var urlComponents = serverConfiguration.baseURLComponents
         urlComponents.path = "/api/1/oauth2/login"
         urlComponents.queryItems = [
             URLQueryItem(
@@ -55,6 +58,7 @@ public final class TrailforksService {
     }
 
     private let networkClient: NetworkClient
+    private let serverConfiguration: TrailforksServerConfiguration
     private let appCredential: TrailforksAppCredential?
 
     private func createURLRequest<R>(
@@ -81,9 +85,7 @@ public final class TrailforksService {
             ])
         }
 
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "www.trailforks.com"
+        var urlComponents = serverConfiguration.baseURLComponents
         urlComponents.path = request.path
 
         let bodyData: Data?
