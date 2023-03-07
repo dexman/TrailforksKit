@@ -18,4 +18,8 @@ public struct TrailforksServerConfiguration {
     )
 
     public let baseURLComponents: URLComponents
+
+    public init(baseURLComponents: URLComponents) {
+        self.baseURLComponents = baseURLComponents
+    }
 }
