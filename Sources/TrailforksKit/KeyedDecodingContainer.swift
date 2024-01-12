@@ -22,7 +22,10 @@ extension KeyedDecodingContainer {
         }
     }
 
-    private func convertFromString<T: LosslessStringConvertible>(_: T.Type, stringValue: String, forKey key: Key) throws -> T {
+    private func convertFromString<T: LosslessStringConvertible>(
+        _: T.Type, stringValue: String,
+        forKey key: Key
+    ) throws -> T {
         guard let value = T(stringValue) else {
             throw DecodingError.dataCorruptedError(
                 forKey: key,

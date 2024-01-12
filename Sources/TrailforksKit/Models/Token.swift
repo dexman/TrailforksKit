@@ -28,7 +28,7 @@ public struct Token: Equatable, Decodable {
         self.username = username
         self.expiresOn = expiresOn
     }
-    
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(
@@ -41,7 +41,7 @@ public struct Token: Equatable, Decodable {
             )
         )
     }
-    
+
     private enum CodingKeys: String, CodingKey {
         case expiresOn = "expires_on"
         case tokenPublic = "token_public"

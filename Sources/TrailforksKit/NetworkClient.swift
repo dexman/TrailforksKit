@@ -31,28 +31,34 @@ extension URLSession: NetworkClient {
             }
             return (data, httpResponse)
         } else {
-            return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<NetworkClientResponse, Error>) in
-                var cancellable: AnyCancellable?
-                cancellable = dataTaskPublisher(for: request).sink(
-                    receiveCompletion: { completion in
-                        switch completion {
-                        case .finished:
-                            break
-                        case let .failure(error):
-                            continuation.resume(throwing: error)
-                        }
-                        cancellable = nil
-                    },
-                    receiveValue: { (data, response) in
-                        guard let httpResponse = response as? HTTPURLResponse else {
-                            continuation.resume(throwing: URLError(.badServerResponse))
-                            return
-                        }
-                        continuation.resume(returning: (data, httpResponse))
+            return try await backwardsCompatibleData(for: request)
+        }
+    }
+
+    private func backwardsCompatibleData(
+        for request: URLRequest
+    ) async throws -> NetworkClientResponse {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<NetworkClientResponse, Error>) in
+            var cancellable: AnyCancellable?
+            cancellable = dataTaskPublisher(for: request).sink(
+                receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
                     }
-                )
-                withExtendedLifetime(cancellable) {}
-            }
+                    cancellable = nil
+                },
+                receiveValue: { (data, response) in
+                    guard let httpResponse = response as? HTTPURLResponse else {
+                        continuation.resume(throwing: URLError(.badServerResponse))
+                        return
+                    }
+                    continuation.resume(returning: (data, httpResponse))
+                }
+            )
+            withExtendedLifetime(cancellable) {}
         }
     }
 }
