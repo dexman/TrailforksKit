@@ -12,7 +12,7 @@ import Foundation
 
 public struct Region: Decodable {
 
-    public let rid: String // "rid": "35629"
+    public let rid: String // "rid": "35629" or "rid": 35629
     public let alias: String // "alias": "arbor-hills-nature-preserve"
     public let title: String // "title": "Arbor Hills Nature Preserve Off Road Bike Trail"
     public let description: String? // "description": "[B]Trail Steward:…"
@@ -31,7 +31,12 @@ public struct Region: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        rid = try container.decode(String.self, forKey: .rid)
+        do {
+            rid = try container.decode(String.self, forKey: .rid)
+        } catch {
+            rid = try String(container.decode(Int.self, forKey: .rid))
+        }
+
         alias = try container.decode(String.self, forKey: .alias)
         title = try container.decode(String.self, forKey: .title)
         description = try container.decodeIfPresent(String.self, forKey: .description)

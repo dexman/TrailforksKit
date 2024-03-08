@@ -2,7 +2,7 @@
     "error": 0,
     "message": "",
     "data": [{
-        "rid": "3716",
+        "rid":  3716,
         "vid": "0",
         "title": "Tyler",
         "alias": "tyler",
@@ -201,7 +201,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3717",
+        "rid":  3717,
         "vid": "0",
         "title": "Tyler State Park",
         "alias": "tyler-state-park",
@@ -400,7 +400,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3718",
+        "rid":  3718,
         "vid": "0",
         "title": "Dallas",
         "alias": "dallas",
@@ -599,7 +599,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3719",
+        "rid":  3719,
         "vid": "0",
         "title": "Big Cedar Wilderness Trails",
         "alias": "big-cedar-wilderness-trails",
@@ -806,7 +806,7 @@
         }],
         "files": false
     }, {
-        "rid": "3720",
+        "rid":  3720,
         "vid": "0",
         "title": "Fort Worth",
         "alias": "fort-worth",
@@ -1005,7 +1005,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3721",
+        "rid":  3721,
         "vid": "0",
         "title": "Gateway Park",
         "alias": "gateway-park",
@@ -1204,7 +1204,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3722",
+        "rid":  3722,
         "vid": "0",
         "title": "Arlington",
         "alias": "arlington",
@@ -1403,7 +1403,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3723",
+        "rid":  3723,
         "vid": "0",
         "title": "River Legacy Park",
         "alias": "river-legacy-park",
@@ -1618,7 +1618,7 @@
         }],
         "files": false
     }, {
-        "rid": "3724",
+        "rid":  3724,
         "vid": "0",
         "title": "Grapevine",
         "alias": "grapevine",
@@ -1817,7 +1817,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3725",
+        "rid":  3725,
         "vid": "0",
         "title": "McKinney",
         "alias": "mckinney",
@@ -2016,7 +2016,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "3726",
+        "rid":  3726,
         "vid": "0",
         "title": "Erwin Park",
         "alias": "erwin-park",
@@ -2219,7 +2219,7 @@
         }],
         "files": false
     }, {
-        "rid": "5013",
+        "rid":  5013,
         "vid": "0",
         "title": "Denton",
         "alias": "denton",
@@ -2418,7 +2418,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "5015",
+        "rid":  5015,
         "vid": "0",
         "title": "Little Elm",
         "alias": "little-elm",
@@ -2617,7 +2617,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "5016",
+        "rid":  5016,
         "vid": "0",
         "title": "Frisco Northwest Community Park",
         "alias": "frisco-northwest-community-park",
@@ -2820,7 +2820,7 @@
         }],
         "files": false
     }, {
-        "rid": "5017",
+        "rid":  5017,
         "vid": "0",
         "title": "Denison",
         "alias": "denison",
@@ -3019,7 +3019,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "5018",
+        "rid":  5018,
         "vid": "0",
         "title": "Cross Timbers",
         "alias": "cross-timbers",
@@ -3222,7 +3222,7 @@
         }],
         "files": false
     }, {
-        "rid": "5020",
+        "rid":  5020,
         "vid": "0",
         "title": "Barber Hills",
         "alias": "barber-hills",
@@ -3425,7 +3425,7 @@
         }],
         "files": false
     }, {
-        "rid": "5021",
+        "rid":  5021,
         "vid": "0",
         "title": "Bonham State Park",
         "alias": "bonham-state-park",
@@ -3624,7 +3624,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "5022",
+        "rid":  5022,
         "vid": "0",
         "title": "Oak Cliff Nature Preserve",
         "alias": "oak-cliff-nature-preserve",
@@ -3827,7 +3827,7 @@
         }],
         "files": false
     }, {
-        "rid": "5023",
+        "rid":  5023,
         "vid": "0",
         "title": "Plano",
         "alias": "plano",
@@ -4026,7 +4026,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "5024",
+        "rid":  5024,
         "vid": "0",
         "title": "Arbor Hills Nature Preserve",
         "alias": "arbor-hills-nature-preserve",
@@ -4233,7 +4233,7 @@
         }],
         "files": false
     }, {
-        "rid": "5025",
+        "rid":  5025,
         "vid": "0",
         "title": "Northshore",
         "alias": "northshore",
@@ -4436,7 +4436,7 @@
         }],
         "files": false
     }, {
-        "rid": "13696",
+        "rid":  13696,
         "vid": "0",
         "title": "Fannin County",
         "alias": "fannin-county-13696",
@@ -4635,7 +4635,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13697",
+        "rid":  13697,
         "vid": "0",
         "title": "Bonham",
         "alias": "bonham-13697",
@@ -4834,7 +4834,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13698",
+        "rid":  13698,
         "vid": "0",
         "title": "Lamar County",
         "alias": "lamar-county-13698",
@@ -5033,7 +5033,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13745",
+        "rid":  13745,
         "vid": "0",
         "title": "Tarrant County",
         "alias": "tarrant-county-13745",
@@ -5232,7 +5232,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13746",
+        "rid":  13746,
         "vid": "0",
         "title": "Horseshoe",
         "alias": "horseshoe-13746",
@@ -5439,7 +5439,7 @@
         }],
         "files": false
     }, {
-        "rid": "13747",
+        "rid":  13747,
         "vid": "0",
         "title": "Denton County",
         "alias": "denton-county-13747",
@@ -5638,7 +5638,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13748",
+        "rid":  13748,
         "vid": "0",
         "title": "Flower Mound",
         "alias": "flower-mound-13748",
@@ -5837,7 +5837,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13749",
+        "rid":  13749,
         "vid": "0",
         "title": "Ray Roberts Greenbelt Corridor",
         "alias": "ray-roberts-greenbelt-corridor-13749",
@@ -6036,7 +6036,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13750",
+        "rid":  13750,
         "vid": "0",
         "title": "Ray Roberts Lake Isle De Bois Unit",
         "alias": "ray-roberts-lake-isle-de-bois-unit-13750",
@@ -6239,7 +6239,7 @@
         }],
         "files": false
     }, {
-        "rid": "13751",
+        "rid":  13751,
         "vid": "0",
         "title": "Ray Roberts Lake Johnson Branch Unit",
         "alias": "ray-roberts-lake-johnson-branch-unit-13751",
@@ -6450,7 +6450,7 @@
         }],
         "files": false
     }, {
-        "rid": "13775",
+        "rid":  13775,
         "vid": "0",
         "title": "Smith County",
         "alias": "smith-county-13775",
@@ -6649,7 +6649,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13782",
+        "rid":  13782,
         "vid": "0",
         "title": "Dallas County",
         "alias": "dallas-county-13782",
@@ -6848,7 +6848,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13783",
+        "rid":  13783,
         "vid": "0",
         "title": "Boulder Park",
         "alias": "boulder-park-13783",
@@ -7051,7 +7051,7 @@
         }],
         "files": false
     }, {
-        "rid": "13827",
+        "rid":  13827,
         "vid": "0",
         "title": "Lindsey Park",
         "alias": "lindsey-park-13827",
@@ -7254,7 +7254,7 @@
         }],
         "files": false
     }, {
-        "rid": "13828",
+        "rid":  13828,
         "vid": "0",
         "title": "University of Texas (Tyler)",
         "alias": "university-of-texas-tyler-13828",
@@ -7453,7 +7453,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "13829",
+        "rid":  13829,
         "vid": "0",
         "title": "Faulkner Park",
         "alias": "faulkner-park-13829",
@@ -7652,7 +7652,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "14433",
+        "rid":  14433,
         "vid": "0",
         "title": "Marion Sansom Park",
         "alias": "marion-sansom-park-14433",
@@ -7859,7 +7859,7 @@
         }],
         "files": false
     }, {
-        "rid": "14710",
+        "rid":  14710,
         "vid": "0",
         "title": "Katie Jackson Park",
         "alias": "katie-jackson-park-14710",
@@ -8066,7 +8066,7 @@
         }],
         "files": false
     }, {
-        "rid": "15667",
+        "rid":  15667,
         "vid": "0",
         "title": "Grapevine Lake",
         "alias": "grapevine-lake-15667",
@@ -8265,7 +8265,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "17589",
+        "rid":  17589,
         "vid": "0",
         "title": "Glen Rose",
         "alias": "glen-rose",
@@ -8464,7 +8464,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "17590",
+        "rid":  17590,
         "vid": "0",
         "title": "Dinosaur Valley",
         "alias": "dinosaur-valley-17590",
@@ -8671,7 +8671,7 @@
         }],
         "files": false
     }, {
-        "rid": "19030",
+        "rid":  19030,
         "vid": "0",
         "title": "Cedar Hill",
         "alias": "cedar-hill",
@@ -8870,7 +8870,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "19031",
+        "rid":  19031,
         "vid": "0",
         "title": "Cedar Hill State Park",
         "alias": "cedar-hill-state-park-19031",
@@ -9077,7 +9077,7 @@
         }],
         "files": false
     }, {
-        "rid": "19537",
+        "rid":  19537,
         "vid": "0",
         "title": "Somervell County",
         "alias": "somervell-county-19537",
@@ -9276,7 +9276,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "19541",
+        "rid":  19541,
         "vid": "0",
         "title": "Collin County",
         "alias": "collin-county-19541",
@@ -9475,7 +9475,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "19611",
+        "rid":  19611,
         "vid": "0",
         "title": "Garland",
         "alias": "garland",
@@ -9674,7 +9674,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "19612",
+        "rid":  19612,
         "vid": "0",
         "title": "Rowlett Creek Preserve",
         "alias": "rowlett-creek-preserve-19612",
@@ -9885,7 +9885,7 @@
         }],
         "files": false
     }, {
-        "rid": "19708",
+        "rid":  19708,
         "vid": "0",
         "title": "Frisco",
         "alias": "frisco-1501216217",
@@ -10084,7 +10084,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "19792",
+        "rid":  19792,
         "vid": "0",
         "title": "Powderly",
         "alias": "powderly",
@@ -10283,7 +10283,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "19793",
+        "rid":  19793,
         "vid": "0",
         "title": "Pilot Point",
         "alias": "pilot-point",
@@ -10482,7 +10482,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "20613",
+        "rid":  20613,
         "vid": "0",
         "title": "TexPlex",
         "alias": "texplex-20613",
@@ -10685,7 +10685,7 @@
         }],
         "files": false
     }, {
-        "rid": "20619",
+        "rid":  20619,
         "vid": "0",
         "title": "Midlothian",
         "alias": "midlothian-1507156748",
@@ -10884,7 +10884,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "22005",
+        "rid":  22005,
         "vid": "0",
         "title": "Knob Hills",
         "alias": "knob-hills-22005",
@@ -11091,7 +11091,7 @@
         }],
         "files": false
     }, {
-        "rid": "22007",
+        "rid":  22007,
         "vid": "0",
         "title": "Harry Moss Park",
         "alias": "harry-moss-park-22007",
@@ -11294,7 +11294,7 @@
         }],
         "files": false
     }, {
-        "rid": "22053",
+        "rid":  22053,
         "vid": "0",
         "title": "Solavaca Ranch",
         "alias": "solavaca-ranch-22053",
@@ -11493,7 +11493,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "22065",
+        "rid":  22065,
         "vid": "0",
         "title": "L.B. Houston Park",
         "alias": "l-b-houston-park-22065",
@@ -11696,7 +11696,7 @@
         }],
         "files": false
     }, {
-        "rid": "22710",
+        "rid":  22710,
         "vid": "0",
         "title": "Corinth",
         "alias": "corinth",
@@ -11895,7 +11895,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "23421",
+        "rid":  23421,
         "vid": "0",
         "title": "Bridgeport",
         "alias": "bridgeport-1526136936",
@@ -12094,7 +12094,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "23422",
+        "rid":  23422,
         "vid": "0",
         "title": "Endeavor Bridgeport Adventure Park",
         "alias": "endeavor-bridgeport-adventure-park-23422",
@@ -12297,7 +12297,7 @@
         }],
         "files": false
     }, {
-        "rid": "23481",
+        "rid":  23481,
         "vid": "0",
         "title": "Eisenhower State Park",
         "alias": "eisenhower-state-park-23481",
@@ -12496,7 +12496,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "23660",
+        "rid":  23660,
         "vid": "0",
         "title": "South Lakes Park",
         "alias": "south-lakes-park-23660",
@@ -12695,7 +12695,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "24208",
+        "rid":  24208,
         "vid": "0",
         "title": "Sister Grove Park",
         "alias": "sister-grove-park-24208",
@@ -12898,7 +12898,7 @@
         }],
         "files": false
     }, {
-        "rid": "24406",
+        "rid":  24406,
         "vid": "0",
         "title": "Waterloo Lake Regional Park",
         "alias": "waterloo-lake-regional-park-24406",
@@ -13097,7 +13097,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "24407",
+        "rid":  24407,
         "vid": "0",
         "title": "Sherman",
         "alias": "sherman-24407",
@@ -13296,7 +13296,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "24408",
+        "rid":  24408,
         "vid": "0",
         "title": "Binkley Park",
         "alias": "binkley-park-24408",
@@ -13495,7 +13495,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "25637",
+        "rid":  25637,
         "vid": "0",
         "title": "Corinth Community Park",
         "alias": "corinth-community-park-25637",
@@ -13698,7 +13698,7 @@
         }],
         "files": false
     }, {
-        "rid": "25775",
+        "rid":  25775,
         "vid": "0",
         "title": "Gordonville",
         "alias": "gordonville",
@@ -13897,7 +13897,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "27456",
+        "rid":  27456,
         "vid": "0",
         "title": "Wise County",
         "alias": "wise-county-27456",
@@ -14096,7 +14096,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "29420",
+        "rid":  29420,
         "vid": "0",
         "title": "Jack County",
         "alias": "jack-county-29420",
@@ -14295,7 +14295,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "29421",
+        "rid":  29421,
         "vid": "0",
         "title": "Jacksboro",
         "alias": "jacksboro",
@@ -14494,7 +14494,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "29435",
+        "rid":  29435,
         "vid": "0",
         "title": "Muenster",
         "alias": "muenster",
@@ -14693,7 +14693,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "29514",
+        "rid":  29514,
         "vid": "0",
         "title": "Cooke County",
         "alias": "cooke-county-29514",
@@ -14892,7 +14892,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "31373",
+        "rid":  31373,
         "vid": "0",
         "title": "Red Kane Park",
         "alias": "red-kane-park",
@@ -15091,7 +15091,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "31506",
+        "rid":  31506,
         "vid": "0",
         "title": "Mineola",
         "alias": "mineola",
@@ -15290,7 +15290,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "31507",
+        "rid":  31507,
         "vid": "0",
         "title": "Mineola Nature Preserve",
         "alias": "mineola-nature-preserve-31507",
@@ -15497,7 +15497,7 @@
         }],
         "files": false
     }, {
-        "rid": "32966",
+        "rid":  32966,
         "vid": "0",
         "title": "Cleburne State Park",
         "alias": "cleburne-state-park",
@@ -15700,7 +15700,7 @@
         }],
         "files": false
     }, {
-        "rid": "32993",
+        "rid":  32993,
         "vid": "0",
         "title": "Cleburne",
         "alias": "cleburne",
@@ -15899,7 +15899,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "32999",
+        "rid":  32999,
         "vid": "0",
         "title": "Johnson County",
         "alias": "johnson-county-32999",
@@ -16098,7 +16098,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "33773",
+        "rid":  33773,
         "vid": "0",
         "title": "Hutchins",
         "alias": "hutchins",
@@ -16297,7 +16297,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "33774",
+        "rid":  33774,
         "vid": "0",
         "title": "Goat Island Preserve",
         "alias": "goat-island-preserve-33774",
@@ -16500,7 +16500,7 @@
         }],
         "files": false
     }, {
-        "rid": "33810",
+        "rid":  33810,
         "vid": "0",
         "title": "Rockwall County",
         "alias": "rockwall-county-33810",
@@ -16699,7 +16699,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "33812",
+        "rid":  33812,
         "vid": "0",
         "title": "Squabble Creek Mountain Bike Trails",
         "alias": "squabble-creek-mountain-bike-trails-33812",
@@ -16902,7 +16902,7 @@
         }],
         "files": false
     }, {
-        "rid": "33845",
+        "rid":  33845,
         "vid": "0",
         "title": "Grayson County",
         "alias": "grayson-county-33845",
@@ -17101,7 +17101,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "33852",
+        "rid":  33852,
         "vid": "0",
         "title": "Farmerville",
         "alias": "farmerville-33852",
@@ -17300,7 +17300,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "33858",
+        "rid":  33858,
         "vid": "0",
         "title": "Campion Trail",
         "alias": "campion-trail-33858",
@@ -17499,7 +17499,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "34284",
+        "rid":  34284,
         "vid": "0",
         "title": "Windmill Hill Preserve",
         "alias": "windmill-hill-preserve-34284",
@@ -17702,7 +17702,7 @@
         }],
         "files": false
     }, {
-        "rid": "34859",
+        "rid":  34859,
         "vid": "0",
         "title": "River Legacy Park Paved Trails",
         "alias": "river-legacy-park-paved-trails-34859",
@@ -17901,7 +17901,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "35629",
+        "rid":  35629,
         "vid": "0",
         "title": "Arbor Hills Nature Preserve Off Road Bike Trail",
         "alias": "arbor-hills-nature-preserve-off-road-bike-trail",
@@ -18112,7 +18112,7 @@
         }],
         "files": false
     }, {
-        "rid": "38170",
+        "rid":  38170,
         "vid": "0",
         "title": "Allen",
         "alias": "allen",
@@ -18311,7 +18311,7 @@
         "links": false,
         "files": false
     }, {
-        "rid": "38370",
+        "rid":  38370,
         "vid": "0",
         "title": "Chisenhall Bike trail",
         "alias": "chisenhall-bike-trail-38370",
